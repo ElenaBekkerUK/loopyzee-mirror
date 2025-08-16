@@ -1,0 +1,16 @@
+[
+  {
+    "origin": [
+      "https://www.loopyzee.com",
+      "https://admin.loopyzee.com",
+      "https://editor.loopyzee.com"
+    ],
+    "method": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    "maxAgeSeconds": 3600,
+    "responseHeader": [
+      "Content-Type",
+      "Authorization",
+      "x-goog-meta-*"
+    ]
+  }
+]

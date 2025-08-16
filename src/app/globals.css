@@ -1,0 +1,96 @@
+/* Tailwind v4: подключаем конфиг и сам Tailwind */
+@config "../../tailwind.config.ts";
+@import "tailwindcss";
+/* Если используешь tailwindcss-animate как плагин через CSS, раскомментируй: */
+/* @plugin "tailwindcss-animate"; */
+
+/* Весь reset — внутри base, чтобы применился ДО утилит */
+@layer base {
+  /* Базовый box-sizing */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  /* Основные HTML теги */
+  html {
+    -webkit-text-size-adjust: 100%;
+    font-family: var(--font-sans);
+  }
+
+  body {
+    margin: 0;
+    background: rgb(var(--bg));
+    color: rgb(var(--text));
+    line-height: 1.5;
+    font-feature-settings: "liga","kern";
+  }
+
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Reset без обнуления bg/border/padding — их задаём утилитами Tailwind */
+  button, input, select, textarea {
+    font: inherit;
+    color: inherit;
+    margin: 0;
+  }
+  button { cursor: pointer; }
+  button:disabled, [disabled] { cursor: not-allowed; }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    font-weight: inherit;
+  }
+
+  /* Формы: убрать нативный вид, чтобы не перебивало UI Kit */
+  input[type="text"],
+  input[type="search"],
+  input[type="email"],
+  input[type="number"],
+  input[type="url"],
+  input[type="password"],
+  select,
+  textarea {
+    -webkit-appearance: none;
+    appearance: none;
+    background-clip: padding-box;
+  }
+
+  /* Скрытый контент для a11y */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Поддержка тёмной темы */
+  :root.dark { color-scheme: dark; }
+
+  /* Motion reduction */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
